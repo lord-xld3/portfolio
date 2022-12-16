@@ -1,0 +1,57 @@
+* {
+    overflow: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+header {
+    background-color: beige;
+    box-sizing: border-box;
+    border-width: 8px;
+    border-color: green;
+    border-style: ridge;
+    margin: 0;
+    padding: 0;
+}
+
+
+header ul{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: right;
+    padding: 5px;
+    margin: 5px;
+}
+
+header li{
+    background-color: bisque;
+    box-sizing: border-box;
+    border-width: 8px;
+    border-color: purple;
+    border-style: ridge;
+    padding: 5px;
+    margin: 5px;
+    padding-top: 10px;
+}
+
+#myName {
+    font-size: 50px;
+    background-color: beige;
+    color: magenta;
+    margin-right: auto;
+    border-width: 0px;
+    padding: 10px;
+}
+
+.bio{
+    font-size: 40px;
+    padding: 10px;
+    margin:10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+img {
+    max-width: 80%;
+    height: auto;
+}
