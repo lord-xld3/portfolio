@@ -4,40 +4,42 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+div {
+    text-align: center;
+}
+
 a {
     text-decoration: none;
     background-color: inherit;
     color: blue;
 }
 
-h2,h3,h4{
-    padding: 0px;
-    margin: 0px;
+/* These are all flexible containers*/
+.linkParent,.repoParent,#myName,#bio,#projects,#links,header ul{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
+/* avoid default bg color within padding/margin area*/
+header,h1,h2,h3,h4,#bio,#projects{
+    padding: 0px;
+    margin: 0px;
+    margin-top: 8px;
+}
+
+/*Style "navigation bar"*/
 header {
     background-color: beige;
     box-sizing: border-box;
     border-width: 8px;
     border-color: green;
     border-style: ridge;
-    margin: 0;
-    padding: 0;
 }
 
-.imgCenter {
-    display: block;
-    text-align: justify;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-header ul{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: right;
-    padding: 5px;
-    margin: 5px;
+header ul,header li{
+    padding: 8px;
+    margin: 8px;
 }
 
 header li{
@@ -46,130 +48,121 @@ header li{
     border-width: 8px;
     border-color: purple;
     border-style: ridge;
+}
+
+.repoContainer h3,h4{
+    background-color: bisque;
     padding: 5px;
     margin: 5px;
-    padding-top: 10px;
 }
 
-.repoContainer ul,li {
+.repoContainer{
+    justify-content: center;
     background-color: bisque;
-}
-
-.repoContainer ul{
     box-sizing: border-box;
     border-width: 8px;
     border-color: purple;
     border-style: ridge;
-    padding: 5px;
-    margin: 5px;
     padding-top: 10px; 
 }
 
 .repoContainer div{
+    justify-content: center;
     background-color: bisque;
     padding: 0px;
     margin: 0px;
 }
 
-#myName {
+/*Section "headers" using large font size + text shadow for emphasis*/
+#myName,#projects,#links,#contact{
     text-shadow: 2px 2px 2px grey;
+    font-size: 40px;
+    padding: 4px;
+    margin:4px;
+    align-items: center;
+}
+
+/*Unique from other headers, remove border and change style*/
+#myName {
     font-size: 50px;
     background-color: beige;
     color: magenta;
     margin-right: auto;
     border-width: 0px;
-    padding: 10px;
 }
 
-#bio{
-    text-shadow: 2px 2px 2px grey;
-    font-size: 40px;
-    padding: 4px;
-    margin:4px;
-    display: flex;
-    flex-flow: row wrap;
+/*These section headers start on left side of screen*/
+#bio,#contact,#projects,#links{
+    font-size: 30px;
     justify-content: flex-start;
 }
 
-#projects{
-    text-shadow: 2px 2px 2px grey;
-    font-size: 40px;
-    padding: 4px;
-    margin:4px;
-    display: flex;
-    flex-flow: row wrap;
+/*Add background box/color to indicate sections of page*/
+#bio,#projects,.linkContainer{
+    background-color: bisque;
+    box-sizing: border-box;
+    border-width: 4px;
+    border-color: blue;
+    border-style: solid;
+}
+
+/* body div centers .repoParent + .linkParent*/
+body div,footer p {
     justify-content: center;
 }
 
-#contact{
-    text-shadow: 2px 2px 2px grey;
-    font-size: 40px;
-    padding: 4px;
-    margin:4px;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-}
-
+/*This section header is on the right or underneath #contact*/
 #links{
-    text-shadow: 2px 2px 2px grey;
-    font-size: 40px;
-    padding: 4px;
-    margin:4px;
-    display: flex;
-    flex-flow: row wrap;
     justify-content: flex-end;
 }
 
-.linkParent{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+/*The .linkContainers will flex row-wise on large screens, 
+and flex column-wise on small screens.
+Creating a parent container allows us to flex those link containers*/
+.linkParent,.repoParent{
+    justify-content: space-around;
 }
 
-.linkContainer{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+/*Center text in container if container takes enough space
+also center height of elements with different font sizes*/
+.linkContainer,header{
     text-align: center;
     align-items: center;
 }
 
-body p,div,.linkContainer h3{
+/* Allow some margin/padding for text elements with invisible containers*/
+body p,div,.linkContainer h3,footer{
     margin: 4px;
     padding: 4px;
 }
 
-body div{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}
-
 img {
+    display: block;
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 70vw;
     height: auto;
 }
 
-footer {
+footer,footer p,h2 div,h4,.linkContainer h3{
     background-color: bisque;
+}
+
+footer {
     box-sizing: border-box;
     border-width: 4px;
     border-color: grey;
     border-style: solid;
-    padding: 5px;
-    margin: 5px;
     padding-top: 10px;
 }
 
 footer p {
-    background-color: bisque;
     display: flex;
-    justify-content: center;
 }
 
 @media screen and (max-width: 1280px) {
-    *,.linkContainer,.linkParent{
+    *,.linkParent,.repoParent{
         flex-flow: block;
         justify-content: center;
     }
