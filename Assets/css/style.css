@@ -1,13 +1,19 @@
 * {
     background-color: beige;
-    overflow: auto;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+/* Center text in div by default*/
 div {
+    display: block;
     text-align: center;
 }
 
+ul{
+    list-style-type: none;
+}
+
+/* Remove underlines from links*/
 a {
     text-decoration: none;
     background-color: inherit;
@@ -15,10 +21,15 @@ a {
 }
 
 /* These are all flexible containers*/
-.linkParent,.repoParent,#myName,#bio,#projects,#links,header ul{
+.linkContainer,#myName,#bio,#projects,#links,header ul{
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+}
+
+.projectContainer{
+    display: flex;
+    flex-flow: row wrap;
+    width: fit-content;
 }
 
 /* avoid default bg color within padding/margin area*/
@@ -37,12 +48,14 @@ header {
     border-style: ridge;
 }
 
+/* Create some negative space in the navigation bar*/
 header ul,header li{
     padding: 8px;
     margin: 8px;
 }
 
-header li{
+/* Give nav buttons their own boxes*/
+header li,.repoContainer{
     background-color: bisque;
     box-sizing: border-box;
     border-width: 8px;
@@ -50,27 +63,33 @@ header li{
     border-style: ridge;
 }
 
-.repoContainer h3,h4{
-    background-color: bisque;
+/* Force bg color and padding within containers*/
+.repoContainer h3,h4,.linkContainer{
+    flex-grow: 1;
     padding: 5px;
     margin: 5px;
 }
 
-.repoContainer{
-    justify-content: center;
-    background-color: bisque;
-    box-sizing: border-box;
-    border-width: 8px;
-    border-color: purple;
-    border-style: ridge;
+.repoContainer,.linkContainer{
+    flex-grow: 1;
     padding-top: 10px; 
 }
 
-.repoContainer div{
-    justify-content: center;
-    background-color: bisque;
+.repoContainer div,.linkContainer div{
+    flex-grow: 1;
     padding: 0px;
-    margin: 0px;
+}
+
+/* Allow some margin/padding for text elements with invisible containers*/
+body p,div,.linkContainer h3,footer{
+    margin: 8px;
+    padding: 4px;
+}
+
+/*Center text in container if container takes enough space
+also center height of elements with different font sizes*/
+.linkContainer{
+    align-items: center;
 }
 
 /*Section "headers" using large font size + text shadow for emphasis*/
@@ -106,8 +125,8 @@ header li{
     border-style: solid;
 }
 
-/* body div centers .repoParent + .linkParent*/
-body div,footer p {
+/* body div centers + */
+footer p {
     justify-content: center;
 }
 
@@ -116,39 +135,22 @@ body div,footer p {
     justify-content: flex-end;
 }
 
-/*The .linkContainers will flex row-wise on large screens, 
-and flex column-wise on small screens.
-Creating a parent container allows us to flex those link containers*/
-.linkParent,.repoParent{
-    justify-content: space-around;
+/* Force bg color within containers*/
+footer,footer p,h2 div,h4,.linkContainer h3,.repoContainer h3,h4,.repoContainer div{
+    background-color: bisque;
 }
 
-/*Center text in container if container takes enough space
-also center height of elements with different font sizes*/
-.linkContainer,header{
-    text-align: center;
-    align-items: center;
-}
-
-/* Allow some margin/padding for text elements with invisible containers*/
-body p,div,.linkContainer h3,footer{
-    margin: 4px;
-    padding: 4px;
-}
-
+/* Force images to be centered within containers*/
 img {
     display: block;
     text-align: justify;
     margin-left: auto;
     margin-right: auto;
-    max-width: 70vw;
+    max-width: 90vw;
     height: auto;
 }
 
-footer,footer p,h2 div,h4,.linkContainer h3{
-    background-color: bisque;
-}
-
+/* Unique container style*/
 footer {
     box-sizing: border-box;
     border-width: 4px;
@@ -157,12 +159,13 @@ footer {
     padding-top: 10px;
 }
 
+/* Allows us to center/flex text within footer*/
 footer p {
     display: flex;
 }
 
 @media screen and (max-width: 1280px) {
-    *,.linkParent,.repoParent{
+    *{
         flex-flow: block;
         justify-content: center;
     }
